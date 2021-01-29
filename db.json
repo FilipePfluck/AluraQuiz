@@ -1,0 +1,81 @@
+{
+    "bg": "https://images.wallpapersden.com/image/download/jojo-s-bizarre-adventure-stardust-crusaders_a2tobG6UmZqaraWkpJRnamtlrWZlbWU.jpg",
+    "title": "Quiz de Jojo's Bizarre Adventure",
+    "description": "Vamos ver se você é realmente um jojofag.",
+    "questions": [
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Qual o nome do stand do Jotaro?",
+        "description": "",
+        "answer": 0,
+        "alternatives": [
+           "Star Platinum",
+           "Stardust Platinum",
+           "Platinum Crusader",
+           "Star Diamond"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+        "title": "A série de mangás é dividida em quantas partes?",
+        "description": "",
+        "answer": 3,
+        "alternatives": [
+          "4",
+          "5",
+          "7",
+          "8"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Qual destes é uma das fontes dos Stands?",
+        "description": "",
+        "answer": 0,
+        "alternatives": [
+           "Uma flecha",
+           "Um ritual",
+           "Radiação"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "You fell for it, fool!",
+        "description": "",
+        "answer": 2,
+        "alternatives": [
+           "Lightning Cross Attack",
+           "Thunder Crossed Hands",
+           "Thunder Cross Split Attack",
+           "Lightning Split Cross Attack"
+        ]
+      },
+      {
+        "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+        "title": "Quem é o usuário do stand Little Feet?",
+        "description": "",
+        "answer": 3,
+        "alternatives": [
+           "Risotto Nero",
+           "Gelatto",
+           "Ghiaccio",
+           "Formaggio"
+        ]
+      }
+    ],
+    "external": [
+      ""
+    ],
+    "theme": {
+      "colors": {
+        "primary": "#9552C4",
+        "secondary": "#E8A320",
+        "mainBg": "#504576",
+        "contrastText": "#F5F5F5",
+        "wrong": "#AC3C38",
+        "success": "#6DEE63"
+      },
+      "borderRadius": "4px"
+    }
+  }
+  
