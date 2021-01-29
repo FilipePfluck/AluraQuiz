@@ -1,6 +1,6 @@
 import db from '../db.json'
 
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, DefaultTheme, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -31,7 +31,7 @@ const theme = db.theme
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme as unknown as DefaultTheme}>
         <GlobalStyle />
         <Component {...pageProps} />
       </ThemeProvider>
