@@ -2,6 +2,6 @@ import db from '../db.json'
 
 import * as S from '../styles/Home'
 
-import Home from '../src/pages/Home'
+import Quiz from '../src/pages/Quiz'
 
-export default Home
+export default Quiz
