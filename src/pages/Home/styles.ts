@@ -96,36 +96,3 @@ export const WidgetContent = styled.div`
     padding: 0;
   }
 `;
-
-export const Input = styled.input`
-  width: 100%;
-  height: 32px;
-
-  border: 0;
-  padding: 8px;
-  color: #282930;
-  border-radius: 4px;
-  outline: 0;
-`
-
-export const Button = styled.button`
-  height: 32px;
-  width: 100%;
-
-  margin-top: 16px;
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  border-radius: 4px;
-  color: ${props => props.theme.colors.contrastText};
-  background-color: ${props => props.theme.colors.primary};
-  transition: 0.2s;
-
-  &:hover{
-    filter: brightness(0.9);
-  }
-
-  &:disabled{
-    background-color: #796c82;
-  }
-`

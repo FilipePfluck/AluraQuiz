@@ -1,9 +1,12 @@
 import React, { useCallback, FormEvent, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
+import db from '../../../db.json'
+
 import * as S from './styles'
 
-import db from '../../../db.json'
+import Input from '../../components/Input'
+import Button from '../../components/Button'
 
 const Home = ()=>{
     const router = useRouter()
@@ -29,16 +32,16 @@ const Home = ()=>{
               <S.WidgetContent>
                 <p>{db.description}</p>
                 <form onSubmit={handleSubmit}>
-                  <S.Input 
+                  <Input 
                     placeholder="Diz aí seu nome"
                     onChange={e => setName(e.target.value)}
                   />
-                  <S.Button 
+                  <Button 
                     type="submit"
                     disabled={name.length === 0}
                   >
                     Jogar 
-                  </S.Button>
+                  </Button>
                 </form>
               </S.WidgetContent>
             </S.Widget>
