@@ -14,28 +14,45 @@ const Quiz = ()=>{
     const numberOfQuestions = db.questions.length
 
     const [currentQuestion, setCurrentQuestion] = useState(0)
-    const [alternative, setAlternative] = useState(0)
+    const [alternative, setAlternative] = useState(-1)
+    const [numberOfRightQuestions, setNumberOfRightQuestions] = useState(0)
+    const [isChanging, setIsChanging] = useState(false)
+    const [hasEnded, setHasEnded] = useState(false)
 
     const question = db.questions[currentQuestion]
 
     const handleNextQuestion = useCallback(()=>{
+        setIsChanging(true)
+
+        if(alternative === -1){
+          return
+        }
+
         if(alternative == question.answer){
-            console.log('certo')
+            setNumberOfRightQuestions(state => state + 1)
         }else{
             console.log('errado')
         }
-        
+
         if(currentQuestion + 1 === numberOfQuestions){
-            console.log('a')
+            setHasEnded(true)
             return
         }
 
-        setCurrentQuestion(state => state+1)
-    },[currentQuestion, numberOfQuestions])
+        setTimeout(()=>{
+          setCurrentQuestion(state => state+1)
+          setIsChanging(false)
+        },700)
+          
+    },[currentQuestion, numberOfQuestions, alternative])
+
+    const handleEndQuestions = useCallback(()=>{
+      alert(`você acertou ${numberOfRightQuestions} de ${numberOfQuestions}`)
+    },[numberOfQuestions, numberOfRightQuestions])
 
     return (
         <S.Background backgroundImage={db.bg}>
-          <S.QuizContainer>
+          {!hasEnded && (<S.QuizContainer>
     
             <S.Widget>
               <S.WidgetHeader>
@@ -45,23 +62,33 @@ const Quiz = ()=>{
               <S.WidgetContent>
                 <h2>{question.title}</h2>
                 <p>{question.description}</p>
-                {question.alternatives.map((alternative, index) => (
-                    <S.Alternative htmlFor={'_'+index}>
-                        <input 
-                            onChange={() => setAlternative(index)}
-                            type="radio" 
-                            id={'_'+index}  
-                            value={alternative}
-                            name="alternative"
-                        />
-                        {alternative}
-                    </S.Alternative>
+                {question.alternatives.map((alt, index) => (
+                  <S.Alternative 
+                    htmlFor={'_'+index} 
+                    key={index}
+                    isChanging={isChanging}
+                    isSelected = {index == alternative}
+                    answer = {''+question.answer}
+                    id= {''+index}
+                    >
+                    <S.Option
+                      onChange={() =>  setAlternative(index) }
+                      type="radio" 
+                      name="alternative"
+                      id={'_'+index}
+                    />
+                    {alt}
+                  </S.Alternative>
                 ))}
                 <Button onClick={handleNextQuestion}>Confirmar</Button>
                 
               </S.WidgetContent>
             </S.Widget>
-          </S.QuizContainer>
+          </S.QuizContainer>)}
+                  
+          {hasEnded && (
+            <p>você acertou {numberOfRightQuestions} de {numberOfQuestions}</p>
+          )}
         </S.Background>
       )
 }

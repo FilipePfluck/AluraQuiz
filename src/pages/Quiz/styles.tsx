@@ -1,7 +1,16 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 interface BackgroundProps{
     backgroundImage: string
+}
+
+interface OptionProps {
+  isAnswer?: boolean
+  isSelected: boolean
+  isChanging: boolean
+  answer: string
+  id:string
+  
 }
 
 export const Background = styled.div<BackgroundProps>`
@@ -103,7 +112,7 @@ export const Image = styled.img`
     max-width: 350px;
 `
 
-export const Alternative = styled.label`
+export const Alternative = styled.label<OptionProps>`
     outline: 0;
     text-decoration: none;
     color: ${({ theme }) => theme.colors.contrastText};
@@ -111,7 +120,7 @@ export const Alternative = styled.label`
     padding: 10px 15px;
     margin-bottom: 8px;
     cursor: pointer;
-    border-radius: ${({ theme }) => theme.borderRadius};
+    border-radius: 4;
     transition: .3s;
     display: block;
     
@@ -119,4 +128,20 @@ export const Alternative = styled.label`
     &:focus {
         opacity: .5;
     }
+
+    ${props => (props.isChanging && props.isSelected) && css`
+      background-color: none;
+      background-color: ${({ theme }) => `${theme.colors.wrong}`}
+    `}
+
+    ${props => (props.isChanging && props.id === props.answer)  && css`
+      background-color: none;
+      background-color: ${({ theme }) => `${theme.colors.success}`}
+    `}
+
+    
+`
+
+export const Option = styled.input`
+
 `
