@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import NextLink from 'next/link'
+
 interface BackgroundProps{
     backgroundImage: string
 }
@@ -84,6 +86,10 @@ export const WidgetHeader = styled.header`
 `;
 
 export const WidgetContent = styled.div`
+  h1{
+    margin-bottom: 16px;
+  }
+
   padding: 24px 32px 32px 32px;
   & > *:first-child {
     margin-top: 0;
@@ -96,3 +102,23 @@ export const WidgetContent = styled.div`
     padding: 0;
   }
 `;
+
+export const WidgetTopic = styled(NextLink)`
+
+      outline: 0;
+      text-decoration: none;
+      color: ${({ theme }) => theme.colors.contrastText};
+      background-color: ${({ theme }) => `${theme.colors.primary}40`};
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      border-radius: 4;
+      transition: .3s;
+      display: block;
+      
+      &:hover,
+      &:focus {
+          opacity: .5;
+      }
+
+`

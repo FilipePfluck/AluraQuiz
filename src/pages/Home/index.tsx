@@ -7,6 +7,7 @@ import * as S from './styles'
 
 import Input from '../../components/Input'
 import Button from '../../components/Button'
+import Link from '../../components/Link'
 
 const Home = ()=>{
     const router = useRouter()
@@ -48,7 +49,23 @@ const Home = ()=>{
             <S.Widget>
               <S.WidgetContent>
                   <h1>Quizes da Galera</h1>
-                  <p>Lorem ipsum dolor sit amet...</p>
+
+                  {db.external.map(link => {
+                    const linkText = link
+                      .replace('https://', '')
+                      .replace('.vercel.app', '')
+                      .replace('/', '')
+
+                    return (
+                        <S.WidgetTopic
+                          key={linkText}
+                          as={Link}
+                          href={`/quiz/${linkText}`}
+                        >
+                          {linkText}
+                        </S.WidgetTopic>
+                    )
+                  })}
               </S.WidgetContent>
             </S.Widget>
           </S.QuizContainer>

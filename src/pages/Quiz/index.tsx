@@ -1,14 +1,12 @@
 import React, { useCallback, FormEvent, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import db from '../../../db.json'
-
 import * as S from './styles'
 
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 
-const Quiz = ()=>{
+const Quiz = ({db})=>{
     const router = useRouter()
 
     const numberOfQuestions = db.questions.length
@@ -45,10 +43,6 @@ const Quiz = ()=>{
         },700)
           
     },[currentQuestion, numberOfQuestions, alternative])
-
-    const handleEndQuestions = useCallback(()=>{
-      alert(`você acertou ${numberOfRightQuestions} de ${numberOfQuestions}`)
-    },[numberOfQuestions, numberOfRightQuestions])
 
     return (
         <S.Background backgroundImage={db.bg}>
@@ -87,7 +81,14 @@ const Quiz = ()=>{
           </S.QuizContainer>)}
                   
           {hasEnded && (
-            <p>você acertou {numberOfRightQuestions} de {numberOfQuestions}</p>
+            <S.QuizContainer>
+              <S.Widget>
+                <S.WidgetHeader>{db.title}</S.WidgetHeader>
+                <S.WidgetContent>
+                  <h2>Você acertou {numberOfRightQuestions} de {numberOfQuestions}</h2>
+                </S.WidgetContent>
+              </S.Widget>
+            </S.QuizContainer>
           )}
         </S.Background>
       )
